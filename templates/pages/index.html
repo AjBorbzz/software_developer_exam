@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} | Software Developer Assessment Exam{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="mt-4">Valens Research</h1>
+        <p>Design and develop a web page for storing and managing (CRUD) an ordered list of 100,000 cars in a relational database.</p>
+        <h2>Constraints</h2>
+        <p>The cars need to be queried by color and returned in order. For example, clicking on “show blue cars” should return Cars D,E, and A, in that specific order. The cars need to be moved often. For example, Car C can be moved in front of Car B and Car D can be moved in front of Car A. 
+        <strong>This needs to be implemented very efficiently, updating as few records as possible.</strong></p>
+        <br>
+        <form method="get">
+          <div class="form-inline">
+           <div class="form-group mx-sm 3 mb-2">
+             {{ filter.form.car_color | as_crispy_field }} 
+           </div>
+          <div class="form-group mx-sm-3 mb-2">
+             <button type="submit" class="btn btn-success" name="color"> Display </button>
+          </div>
+         </div>
+              <table class="table table-striped">
+              <thead>
+                  <tr>
+                  <th scope="col">Car Brand</th>
+                  <th scope="col">Car Model</th>
+                  <th scope="col">Car Owner</th>
+                  <th scope="col">Car Color</th>
+                  </tr>
+              </thead>
+              <tbody id="sortable" class="connectedSortable">
+              {% for item in filter.qs %}
+                  <tr id="entry_{{ item.id }}" class="ui-state-default">
+                  <td>{{ item.car_brand }}</td>
+                  <td>{{ item.car_model }}</td>
+                  <td>{{ item.car_owner }}</td>
+                  <td>{{ item.car_color }}</td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+              </table>
+        </div>
+
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} | Add Car {% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+ <div class="container">
+  <form method="post">
+    {% csrf_token %}
+  
+    <div class="row">
+        <div class="col-3">
+          {{ form.car_brand|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.car_model|as_crispy_field }}
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-3">
+          {{ form.car_owner|as_crispy_field }}
+      </div>
+      <div class="col-3">
+          {{ form.car_color|as_crispy_field }}
+      </div>
+      </div>
+
+      <input class="btn btn-lg btn-success" type="submit" name="submit">
+    </div>  
+  </form>
+</div>
+{% endblock %}
