@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}">
     <!-- Sortable -->
@@ -18,18 +18,30 @@
     </head>
     <body>
         <div class="d-flex" id="wrapper">
-            <!-- side-bar -->
+                <!-- side-bar -->
             {% include 'partials/_side-bar.html' %}
-            {% include 'partials/_navbar.html' %}
-            <!-- NavBar -->
-            
-            <!-- Main content-->
-            {% block content %}{% endblock %}
+                <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <!-- NavBar -->
+                {% include 'partials/_navbar.html' %}
+                <!-- Main content-->
+                <div class="container-fluid">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
         </div>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script>
         <script>
         $( function() {
             $( "#sortable" ).sortable();
