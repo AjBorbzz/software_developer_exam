@@ -25,14 +25,14 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
-def about(request):
+def instructions(request):
     latest_car = Car.objects.all()
     filter_cars = CarFilter(request.GET, queryset=latest_car)
     context = {
         'latest_car': latest_car,
         'filter': filter_cars,
     }
-    return render(request, 'pages/about.html', context)
+    return render(request, 'pages/instructions.html', context)
 
 
 def enroll(request):
