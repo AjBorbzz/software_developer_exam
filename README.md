@@ -23,7 +23,7 @@ Enroll Car page:
 
 Instruction page:
 * Contains the problem and constraints of the software developer exam.
-* 
+
 ### Installation
 
 requires [Django](https://www.djangoproject.com/download/) v3.0.2 to run.
